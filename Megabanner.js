@@ -3,43 +3,46 @@
   var clickUrl = "https://bygtek.dk";
 
   var html = `
-  <div class="banner">
+  <div class="banner-wrapper">
 
-    <div class="banner-bg"></div>
+    <div class="banner">
 
-    <div class="banner-content">
+      <div class="banner-bg"></div>
 
-      <div class="big-text">VIDEN OM</div>
-      <div class="big-text-static">VIDEN OM</div>
+      <div class="banner-content">
 
-      <div class="guide-text">
-        Vi har 15 fagsektioner med nyheder, artikler og virksomheder.
-      </div>
+        <div class="big-text">VIDEN OM</div>
+        <div class="big-text-static">VIDEN OM</div>
 
-      <div class="cta">
-        Se alle fagsektionerne under VIDEN OM, der er vist under BygTek logoet
-      </div>
+        <div class="guide-text">
+          Vi har 15 fagsektioner med nyheder, artikler og virksomheder.
+        </div>
 
-      <div class="fake-dropdown">
-        <div class="dropdown-label">Se din fagsektion her:</div>
-        <div class="dropdown-header">VIDEN OM ☰</div>
+        <div class="cta">
+          Se alle fagsektionerne under Viden om, der er vist under BygTek logoet
+        </div>
 
-        <ul class="dropdown-list">
-          <li>TAG</li>
-          <li>FACADER</li>
-          <li>INDEKLIMA</li>
-          <li>ENTREPRENØR</li>
-          <li>ISOLERING</li>
-          <li>TRÆ</li>
-          <li>VVS</li>
-          <li>KLOAK</li>
-          <li>SE ØVRIGE UNDER</li>
-          <li>VIDEN OM</li>
-        </ul>
+        <div class="fake-dropdown">
+          <div class="dropdown-label">Se din fagsektion her:</div>
+          <div class="dropdown-header">VIDEN OM ☰</div>
+
+          <ul class="dropdown-list">
+            <li>TAG</li>
+            <li>FACADER</li>
+            <li>INDEKLIMA</li>
+            <li>ENTREPRENØR</li>
+            <li>ISOLERING</li>
+            <li>TRÆ</li>
+            <li>VVS</li>
+            <li>KLOAK</li>
+            <li>SE ØVRIGE UNDER</li>
+            <li>VIDEN OM</li>
+          </ul>
+        </div>
+
       </div>
 
     </div>
-
   </div>
   `;
 
@@ -49,10 +52,17 @@
   var style = document.createElement("style");
   style.innerHTML = `
 
+  /* WRAPPER = RESPONSIV */
+  .banner-wrapper {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+
   .banner {
     position: relative;
-    width: 1920px;
-    height: 600px;
+    width: 100%;
+    aspect-ratio: 1920 / 600;
     overflow: hidden;
     font-family: Arial;
   }
@@ -60,7 +70,7 @@
   .banner-bg {
     position: absolute;
     inset: 0;
-    background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/Megabanner-bg.jpg') right center / cover no-repeat;
+    background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/viden-om-bg.jpg') right center / cover no-repeat;
   }
 
   .banner::after {
@@ -82,63 +92,35 @@
     height: 100%;
   }
 
-  /* 🔥 STOR VIDEN OM */
-.big-text {
-  position: absolute;
-  left: 6%;
-  top: 42%; /* 👈 rykket lidt op */
-  transform: translateY(-50%) scale(0.2);
-  font-size: 180px;
-  font-weight: 800;
-  color: #ffcc00;
-  letter-spacing: 4px;
-
-  animation: zoomText 3s ease forwards;
-}
-
-.big-text-static {
-  position: absolute;
-  left: 14%;
-  top: 65%;
-  transform: translateY(-50%);
-  font-size: 120px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  color: rgba(255,255,255,0.05);
-}
-/* 🔥 animation som før */
-@keyframes zoomText {
-
-  0% {
+  /* 🔥 RESPONSIV TYPO */
+  .big-text {
+    position: absolute;
+    left: 6%;
+    top: 42%;
     transform: translateY(-50%) scale(0.2);
-    opacity: 0;
-  }
-
-  30% {
-    transform: translateY(-50%) scale(1.3);
-    opacity: 1;
+    font-size: clamp(60px, 10vw, 180px);
+    font-weight: 800;
     color: #ffcc00;
-  }
 
-  60% {
-    transform: translateY(-50%) scale(1.3);
-    color: #ffcc00;
+    animation: zoomText 3s forwards;
   }
-
-  100% {
-    transform: translateY(-50%) scale(1);
-    color: rgba(255,255,255,0.08);
-  }
-}
 
   @keyframes zoomText {
     0% { transform: translateY(-50%) scale(0.2); opacity: 0; }
     40% { transform: translateY(-50%) scale(1.2); opacity: 1; }
-    70% { transform: translateY(-50%) scale(1.2); }
     100% { 
       transform: translateY(-50%) scale(1);
       color: rgba(255,255,255,0.08);
     }
+  }
+
+  .big-text-static {
+    position: absolute;
+    left: 14%;
+    top: 65%;
+    transform: translateY(-50%);
+    font-size: clamp(40px, 6vw, 120px);
+    color: rgba(255,255,255,0.05);
   }
 
   .guide-text {
@@ -146,8 +128,8 @@
     left: 6%;
     bottom: 30%;
     color: #fff;
-    font-size: 26px;
-    max-width: 520px;
+    font-size: clamp(14px, 1.6vw, 26px);
+    max-width: 40%;
   }
 
   .cta {
@@ -156,48 +138,61 @@
     bottom: 10%;
     background: #ffcc00;
     color: #000;
-    padding: 14px 20px;
+    padding: 12px 18px;
     font-weight: 700;
-    max-width: 420px;
+    font-size: clamp(12px, 1vw, 16px);
+    max-width: 40%;
   }
 
   /* DROPDOWN */
   .fake-dropdown {
     position: absolute;
-    top: 20%;
-    right: 8%;
-    width: 280px;
+    top: 30%;
+    right: 6%;
+    width: clamp(180px, 18vw, 280px);
   }
 
   .dropdown-label {
     color: #003f7a;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-size: clamp(10px, 1vw, 14px);
+    margin-bottom: 6px;
   }
 
   .dropdown-header {
     background: #e5e5e5;
-    padding: 12px;
-    margin-top: 10px;
-  }
-
-  .dropdown-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 10px;
+    font-size: clamp(10px, 1vw, 14px);
   }
 
   .dropdown-list li {
     background: #f2f2f2;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    font-size: clamp(10px, 1vw, 14px);
     display: none;
+  }
+
+  /* 📱 MOBIL */
+  @media (max-width: 768px) {
+
+    .fake-dropdown {
+      display: none; /* dropdown væk på mobil */
+    }
+
+    .guide-text {
+      max-width: 80%;
+      bottom: 20%;
+    }
+
+    .cta {
+      bottom: 8%;
+    }
+
   }
 
   `;
   document.head.appendChild(style);
 
-  // === DROPDOWN LOGIK (STEP-BY-STEP) ===
+  // === DROPDOWN LOGIK ===
   var items = document.querySelectorAll('.dropdown-list li');
   var index = 0;
   var direction = "down";
@@ -221,9 +216,8 @@
     }
   }
 
-  // starter efter VIDEN OM animation
   setTimeout(function () {
-    setInterval(runDropdown, 400); // tempo (justér her!)
+    setInterval(runDropdown, 500);
   }, 3000);
 
 })();
