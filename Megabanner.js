@@ -224,13 +224,36 @@ function runDropdown() {
   }
 }
 
-/* starter efter VIDEN OM animation */
-setTimeout(function () {
-  setInterval(runDropdown, 800); // 👈 tempo (vigtig!)
-}, 3000);
+function startLoop() {
 
+  // reset dropdown
+  items.forEach(el => el.style.display = "none");
+  index = 0;
+  direction = "down";
+
+  // restart VIDEN OM animation
+  var text = document.querySelector('.big-text');
+  text.style.animation = "none";
+  text.offsetHeight; // reset trick
+  text.style.animation = "zoomText 3s forwards";
+
+  // start dropdown efter zoom
   setTimeout(function () {
-    setInterval(runDropdown, 500);
+
+    var dropdownInterval = setInterval(runDropdown, 600);
+
+    // stop dropdown efter gennemløb
+    setTimeout(function () {
+      clearInterval(dropdownInterval);
+
+      // pause før næste loop
+      setTimeout(startLoop, 1500);
+
+    }, 9000);
+
   }, 3000);
 
-})();
+}
+
+// start første gang
+startLoop();
