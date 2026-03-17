@@ -167,7 +167,67 @@
   }
 
   .dropdown-list li {
+  background: #f2f2f2;/* CONTAINER */
+.dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ITEMS */
+.dropdown-list li {
   background: #f2f2f2;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+
+  opacity: 0;
+  transform: translateY(-6px);
+
+  animation: dropdownItem 12s infinite;
+}
+
+/* 🔽 ÅBNER (top → bund, langsommere) */
+.dropdown-list li:nth-child(1) { animation-delay: 0.5s; }
+.dropdown-list li:nth-child(2) { animation-delay: 1.0s; }
+.dropdown-list li:nth-child(3) { animation-delay: 1.5s; }
+.dropdown-list li:nth-child(4) { animation-delay: 2.0s; }
+.dropdown-list li:nth-child(5) { animation-delay: 2.5s; }
+.dropdown-list li:nth-child(6) { animation-delay: 3.0s; }
+.dropdown-list li:nth-child(7) { animation-delay: 3.5s; }
+.dropdown-list li:nth-child(8) { animation-delay: 4.0s; }
+.dropdown-list li:nth-child(9) { animation-delay: 4.5s; }
+.dropdown-list li:nth-child(10) { animation-delay: 5.0s; }
+
+/* 🔥 ANIMATION */
+@keyframes dropdownItem {
+
+  /* skjult */
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  /* falder ned */
+  6% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* står stille */
+  60% {
+    opacity: 1;
+  }
+
+  /* 🔼 LUKKER (bund → top via delay systemet) */
+  80% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
   padding: 10px;
   border-bottom: 1px solid #ddd;
 
