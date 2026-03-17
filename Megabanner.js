@@ -15,11 +15,13 @@
         <div class="big-text-static">VIDEN OM</div>
 
         <div class="guide-text">
-          Vi har 15 fagsektioner med nyheder, artikler og virksomheder.
+          Vi har 15 fagsektioner med nyheder, artikler 
+          og virksomheder.
         </div>
 
         <div class="cta">
-          Se alle fagsektionerne under Viden om, der er vist under BygTek logoet
+          Se alle fagsektionerne under VIDEN OM, 
+          der er vist under BygTek logoet
         </div>
 
         <div class="fake-dropdown">
@@ -147,7 +149,7 @@
   /* DROPDOWN */
   .fake-dropdown {
     position: absolute;
-    top: 30%;
+    top: 20%;
     right: 6%;
     width: clamp(180px, 18vw, 280px);
   }
