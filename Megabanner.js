@@ -83,7 +83,7 @@
   .banner-bg {
     position: absolute;
     inset: 0;
-    background: url('https://bygtek.dk/wp-content/uploads/viden-om-bg.jpg') right center / cover no-repeat;
+    background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/viden-om-bg.jpg') right center / cover no-repeat;
     opacity: 0.9;
   }
 
