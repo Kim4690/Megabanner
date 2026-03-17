@@ -9,7 +9,7 @@
 
     <div class="banner-content">
 
-      <div class="big-text">VIDEN OM</div>
+      <div class="big-text-2">VIDEN OM</div>
 
       <div class="guide-text">
         Vi har 15 fagsektioner med nyheder, artikler og virksomheder.
@@ -82,17 +82,18 @@
   }
 
   /* 🔥 STOR VIDEN OM */
-  .big-text {
-    position: absolute;
-    left: 6%;
-    top: 50%;
-    transform: translateY(-50%) scale(0.2);
-    font-size: 220px;
-    font-weight: 800;
-    color: #ffcc00;
-
-    animation: zoomText 3s forwards;
-  }
+.big-text-2 {
+  position: absolute;
+  left: 12%;
+  top: 60%;
+  transform: translateY(-50%);
+  font-size: 120px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.05);
+}
+ 
+  animation: zoomText 3s forwards;
+}
 
   @keyframes zoomText {
     0% { transform: translateY(-50%) scale(0.2); opacity: 0; }
@@ -127,7 +128,7 @@
   /* DROPDOWN */
   .fake-dropdown {
     position: absolute;
-    top: 45%;
+    top: 30%;
     right: 8%;
     width: 280px;
   }
