@@ -155,7 +155,7 @@
     list-style: none;
     overflow: hidden;
     max-height: 0;
-    animation: dropdown 5s infinite;
+    animation: dropdown 9s infinite;
   }
 
   .dropdown-list li {
