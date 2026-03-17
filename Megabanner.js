@@ -12,7 +12,7 @@
       <div class="big-text">VIDEN OM</div>
 
       <div class="guide-text">
-        Vi har 15 fagsektioner med nyheder, artikler og virksomheder. Sikkert også en til dig
+        Vi har 15 fagsektioner med nyheder, artikler og virksomheder.
       </div>
 
       <div class="cta">
@@ -21,7 +21,6 @@
 
       <div class="fake-dropdown">
         <div class="dropdown-label">Se din fagsektion her:</div>
-
         <div class="dropdown-header">VIDEN OM ☰</div>
 
         <ul class="dropdown-list">
@@ -33,13 +32,14 @@
           <li>TRÆ</li>
           <li>VVS</li>
           <li>KLOAK</li>
-          <li><strong>SE ØVRIGE UNDER</strong></li>
-          <li><strong>VIDEN OM</strong></li>
+          <li>SE ØVRIGE UNDER</li>
+          <li>VIDEN OM</li>
         </ul>
       </div>
 
     </div>
 
+    <!-- MODAL -->
     <div class="banner-modal" id="bannerModal">
       <div class="modal-content">
 
@@ -81,10 +81,9 @@
   .banner-bg {
     position: absolute;
     inset: 0;
-    background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/Megabanner-bg.jpg') right center / cover no-repeat;
+    background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/viden-om-bg.jpg') right center / cover no-repeat;
   }
 
-  /* BLÅ OVERLAY */
   .banner::after {
     content: "";
     position: absolute;
@@ -105,14 +104,24 @@
     height: 100%;
   }
 
+  /* 🔥 VIDEN OM ANIMATION */
   .big-text {
     position: absolute;
     left: 6%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scale(0.2);
     font-size: 140px;
     color: rgba(255,255,255,0.08);
     font-weight: 700;
+
+    animation: zoomText 2.5s ease forwards;
+  }
+
+  @keyframes zoomText {
+    0% { transform: translateY(-50%) scale(0.2); opacity: 0; }
+    40% { transform: translateY(-50%) scale(0.75); opacity: 1; }
+    70% { transform: translateY(-50%) scale(0.75); }
+    100% { transform: translateY(-50%) scale(1); }
   }
 
   .guide-text {
@@ -144,7 +153,6 @@
     width: 280px;
   }
 
-  /* MØRKERE BLÅ */
   .dropdown-label {
     color: #003f7a;
     font-size: 14px;
@@ -159,7 +167,6 @@
     margin-top: 10px;
   }
 
-  /* 👇 DEN VIGTIGE DEL */
   .dropdown-list {
     list-style: none;
     margin: 0;
@@ -167,162 +174,38 @@
   }
 
   .dropdown-list li {
-  background: #f2f2f2;/* CONTAINER */
-.dropdown-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+    background: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
 
-/* ITEMS */
-.dropdown-list li {
-  background: #f2f2f2;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-
-  opacity: 0;
-  transform: translateY(-6px);
-
-  animation: dropdownItem 14s infinite;
-}
-
-/* 🔽 ÅBNER (top → bund, langsommere) */
-.dropdown-list li:nth-child(1) { animation-delay: 0.5s; }
-.dropdown-list li:nth-child(2) { animation-delay: 1.0s; }
-.dropdown-list li:nth-child(3) { animation-delay: 1.5s; }
-.dropdown-list li:nth-child(4) { animation-delay: 2.0s; }
-.dropdown-list li:nth-child(5) { animation-delay: 2.5s; }
-.dropdown-list li:nth-child(6) { animation-delay: 3.0s; }
-.dropdown-list li:nth-child(7) { animation-delay: 3.5s; }
-.dropdown-list li:nth-child(8) { animation-delay: 4.0s; }
-.dropdown-list li:nth-child(9) { animation-delay: 4.5s; }
-.dropdown-list li:nth-child(10) { animation-delay: 5.0s; }
-
-/* 🔥 ANIMATION */
-@keyframes dropdownItem {
-
-  /* skjult */
-  0% {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-
-  /* falder ned */
-  6% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* står stille */
-  60% {
-    opacity: 1;
-  }
-
-  /* 🔼 LUKKER (bund → top via delay systemet) */
-  80% {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-
-  opacity: 0;
-  transform: translateY(-8px);
-
-  animation: dropItem 10s infinite;
-}
-
-/* ÅBNER (top → bund) */
-.dropdown-list li:nth-child(1) { animation-delay: 0.3s; }
-.dropdown-list li:nth-child(2) { animation-delay: 0.6s; }
-.dropdown-list li:nth-child(3) { animation-delay: 0.9s; }
-.dropdown-list li:nth-child(4) { animation-delay: 1.2s; }
-.dropdown-list li:nth-child(5) { animation-delay: 1.5s; }
-.dropdown-list li:nth-child(6) { animation-delay: 1.8s; }
-.dropdown-list li:nth-child(7) { animation-delay: 2.1s; }
-.dropdown-list li:nth-child(8) { animation-delay: 2.4s; }
-.dropdown-list li:nth-child(9) { animation-delay: 2.7s; }
-.dropdown-list li:nth-child(10) { animation-delay: 3.0s; }
-
-/* NY ANIMATION */
-@keyframes dropItem {
-
-  0% {
     opacity: 0;
     transform: translateY(-8px);
+
+    animation: dropdownItem 14s infinite;
   }
 
-  8% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* starter efter zoom */
+  .dropdown-list li:nth-child(1) { animation-delay: 3.0s; }
+  .dropdown-list li:nth-child(2) { animation-delay: 3.5s; }
+  .dropdown-list li:nth-child(3) { animation-delay: 4.0s; }
+  .dropdown-list li:nth-child(4) { animation-delay: 4.5s; }
+  .dropdown-list li:nth-child(5) { animation-delay: 5.0s; }
+  .dropdown-list li:nth-child(6) { animation-delay: 5.5s; }
+  .dropdown-list li:nth-child(7) { animation-delay: 6.0s; }
+  .dropdown-list li:nth-child(8) { animation-delay: 6.5s; }
+  .dropdown-list li:nth-child(9) { animation-delay: 7.0s; }
+  .dropdown-list li:nth-child(10) { animation-delay: 7.5s; }
 
-  /* 👇 HER ER DEN DU LEDER EFTER */
-  60% {
-    opacity: 1;
-  }
-
-  75% {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-  /* fade ind */
-  8% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* står stille (læsbart!) */
-  70% {
-    opacity: 1;
-  }
-
-  /* begynder at forsvinde */
-  75% {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-
-  /* reset */
-  100% {
-    opacity: 0;
-  }
-}
-
-  /* STAGGER (opbygning oppefra) */
-  .dropdown-list li:nth-child(1) { animation-delay: 0.2s; }
-  .dropdown-list li:nth-child(2) { animation-delay: 0.4s; }
-  .dropdown-list li:nth-child(3) { animation-delay: 0.6s; }
-  .dropdown-list li:nth-child(4) { animation-delay: 0.8s; }
-  .dropdown-list li:nth-child(5) { animation-delay: 1.0s; }
-  .dropdown-list li:nth-child(6) { animation-delay: 1.2s; }
-  .dropdown-list li:nth-child(7) { animation-delay: 1.4s; }
-  .dropdown-list li:nth-child(8) { animation-delay: 1.6s; }
-  .dropdown-list li:nth-child(9) { animation-delay: 1.8s; }
-  .dropdown-list li:nth-child(10) { animation-delay: 2.0s; }
-
-  @keyframes dropItem {
-    0% { opacity: 0; transform: translateY(-10px); }
-    10% { opacity: 1; transform: translateY(0); }
-    70% { opacity: 1; }
-    85% { opacity: 0; transform: translateY(-10px); }
+  @keyframes dropdownItem {
+    0% { opacity: 0; transform: translateY(-8px); }
+    6% { opacity: 1; transform: translateY(0); }
+    55% { opacity: 1; }
+    70% { opacity: 0; transform: translateY(-8px); }
     100% { opacity: 0; }
   }
 
-.dropdown-list li:hover {
-  background: #e6e6e6;
-}
+  .dropdown-list li:hover {
+    background: #e6e6e6;
   }
 
   /* MODAL */
