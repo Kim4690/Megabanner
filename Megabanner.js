@@ -15,7 +15,7 @@
         <div class="big-text-static">VIDEN OM</div>
 
         <div class="guide-text">
-        Vi har 15 fagsektioner med nyheder, artikler<br>
+        15 fagsektioner med nyheder, artikler<br>
         og virksomheder.
         </div>
 
