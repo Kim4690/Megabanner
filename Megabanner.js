@@ -16,7 +16,7 @@
         Find din fagsektion under <strong>VIDEN OM</strong>
       </div>
 
-      <div class="cta">SE ALLE FAGSEKTIONER</div>
+      <div class="cta">SE ALLE FAGSEKTIONERNE</div>
 
       <div class="fake-dropdown">
         <div class="dropdown-label">Se din fagsektion her:</div>
@@ -31,6 +31,7 @@
           <li>TRÆ</li>
           <li>VVS</li>
           <li>KLOAK</li>
+          <li><strong>SE ØVRIGE UNDER VIDEN OM</strong></li>
         </ul>
       </div>
 
@@ -44,9 +45,7 @@
 
         <h2>Tak for din interesse</h2>
 
-        <p>
-        Du er meget velkommen til at kontakte:
-        </p>
+        <p>Du er meget velkommen til at kontakte:</p>
 
         <div class="contact-box">
           <strong>Kim Anker</strong><br>
@@ -83,17 +82,17 @@
     background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/Megabanner-bg.jpg') right center / cover no-repeat;
   }
 
-  /* BLÅ OVERLAY */
+  /* BLÅ OVERLAY (justeret) */
   .banner::after {
     content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to right,
-      rgba(0,60,120,0.75),
-      rgba(0,90,160,0.5),
-      rgba(0,120,200,0.2),
-      rgba(0,0,0,0)
+      rgba(0,60,120,0.65) 0%,
+      rgba(0,90,160,0.45) 20%,
+      rgba(0,120,200,0.15) 35%,
+      rgba(0,0,0,0) 50%
     );
     z-index: 1;
   }
@@ -121,9 +120,10 @@
     bottom: 22%;
     color: #fff;
     font-size: 28px;
-    max-width: 500px;
+    max-width: 520px;
   }
 
+  /* CTA */
   .cta {
     position: absolute;
     left: 6%;
@@ -131,7 +131,7 @@
     background: #ffcc00;
     color: #000;
     padding: 12px 18px;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   /* DROPDOWN */
@@ -143,8 +143,9 @@
     width: 280px;
   }
 
+  /* 🔥 NY FARVE (ikke hvid) */
   .dropdown-label {
-    color: #fff;
+    color: #d0e7ff;
     font-size: 14px;
     margin-bottom: 6px;
   }
@@ -158,35 +159,42 @@
   .dropdown-list {
     background: #f2f2f2;
     list-style: none;
+    overflow: hidden;
+    max-height: 0;
     opacity: 0;
-    transform: translateY(-10px);
-    animation: dropdownFade 6s infinite;
+    animation: dropdownOpen 6s infinite;
   }
 
-  @keyframes dropdownFade {
-    0% { opacity: 0; transform: translateY(-10px); }
-    20% { opacity: 1; transform: translateY(0); }
-    80% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-10px); }
+  @keyframes dropdownOpen {
+    0% { max-height: 0; opacity: 0; }
+    15% { max-height: 340px; opacity: 1; }
+    85% { max-height: 340px; opacity: 1; }
+    100% { max-height: 0; opacity: 0; }
   }
 
   .dropdown-list li {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     opacity: 0;
+    transform: translateY(-5px);
+    animation: itemLoop 6s infinite;
   }
 
-  .dropdown-list li:nth-child(1) { animation: itemFade 0.4s forwards 1.2s; }
-  .dropdown-list li:nth-child(2) { animation: itemFade 0.4s forwards 1.4s; }
-  .dropdown-list li:nth-child(3) { animation: itemFade 0.4s forwards 1.6s; }
-  .dropdown-list li:nth-child(4) { animation: itemFade 0.4s forwards 1.8s; }
-  .dropdown-list li:nth-child(5) { animation: itemFade 0.4s forwards 2.0s; }
-  .dropdown-list li:nth-child(6) { animation: itemFade 0.4s forwards 2.2s; }
-  .dropdown-list li:nth-child(7) { animation: itemFade 0.4s forwards 2.4s; }
-  .dropdown-list li:nth-child(8) { animation: itemFade 0.4s forwards 2.6s; }
+  .dropdown-list li:nth-child(1) { animation-delay: 0.2s; }
+  .dropdown-list li:nth-child(2) { animation-delay: 0.4s; }
+  .dropdown-list li:nth-child(3) { animation-delay: 0.6s; }
+  .dropdown-list li:nth-child(4) { animation-delay: 0.8s; }
+  .dropdown-list li:nth-child(5) { animation-delay: 1.0s; }
+  .dropdown-list li:nth-child(6) { animation-delay: 1.2s; }
+  .dropdown-list li:nth-child(7) { animation-delay: 1.4s; }
+  .dropdown-list li:nth-child(8) { animation-delay: 1.6s; }
+  .dropdown-list li:nth-child(9) { animation-delay: 1.8s; }
 
-  @keyframes itemFade {
-    to { opacity: 1; }
+  @keyframes itemLoop {
+    0% { opacity: 0; transform: translateY(-5px); }
+    10% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
   }
 
   .dropdown-list li:hover {
