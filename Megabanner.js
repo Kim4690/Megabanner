@@ -167,14 +167,78 @@
   }
 
   .dropdown-list li {
-    background: #f2f2f2;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+  background: #f2f2f2;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 
+  opacity: 0;
+  transform: translateY(-8px);
+
+  animation: dropItem 10s infinite;
+}
+
+/* ÅBNER (top → bund) */
+.dropdown-list li:nth-child(1) { animation-delay: 0.3s; }
+.dropdown-list li:nth-child(2) { animation-delay: 0.6s; }
+.dropdown-list li:nth-child(3) { animation-delay: 0.9s; }
+.dropdown-list li:nth-child(4) { animation-delay: 1.2s; }
+.dropdown-list li:nth-child(5) { animation-delay: 1.5s; }
+.dropdown-list li:nth-child(6) { animation-delay: 1.8s; }
+.dropdown-list li:nth-child(7) { animation-delay: 2.1s; }
+.dropdown-list li:nth-child(8) { animation-delay: 2.4s; }
+.dropdown-list li:nth-child(9) { animation-delay: 2.7s; }
+.dropdown-list li:nth-child(10) { animation-delay: 3.0s; }
+
+/* NY ANIMATION */
+@keyframes dropItem {
+
+  0% {
     opacity: 0;
-    transform: translateY(-5px);
-    animation: dropItem 8s infinite;
+    transform: translateY(-8px);
   }
+
+  8% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 👇 HER ER DEN DU LEDER EFTER */
+  60% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+  /* fade ind */
+  8% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* står stille (læsbart!) */
+  70% {
+    opacity: 1;
+  }
+
+  /* begynder at forsvinde */
+  75% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  /* reset */
+  100% {
+    opacity: 0;
+  }
+}
 
   /* STAGGER (opbygning oppefra) */
   .dropdown-list li:nth-child(1) { animation-delay: 0.2s; }
