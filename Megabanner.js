@@ -11,7 +11,7 @@
     <div class="banner-content">
 
       <div class="guide-text">
-        Find alle fagsektioner under <strong>VIDEN OM</strong>
+        Vi har 15 fagsektioner, med nyheder, artikler og virksomheder - sikkert også en inden for dit fagområde. Se fagsektionerne under<strong>VIDEN OM</strong>
       </div>
 
       <div class="cta">SE ALLE FAGSEKTIONER</div>
