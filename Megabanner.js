@@ -128,7 +128,7 @@
   /* DROPDOWN */
   .fake-dropdown {
     position: absolute;
-    top: 25%;
+    top: 20%;
     right: 8%;
     width: 280px;
   }
