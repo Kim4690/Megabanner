@@ -227,7 +227,7 @@ function runDropdown() {
 
 /* starter efter VIDEN OM animation */
 setTimeout(function () {
-  setInterval(runDropdown, 700); // 👈 tempo (vigtig!)
+  setInterval(runDropdown, 800); // 👈 tempo (vigtig!)
 }, 3000);
 
   setTimeout(function () {
