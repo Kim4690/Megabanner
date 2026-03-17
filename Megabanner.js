@@ -166,11 +166,12 @@
     font-size: clamp(10px, 1vw, 14px);
   }
 
-  .dropdown-list li {
+   .dropdown-list li {
     background: #f2f2f2;
     padding: 8px;
+    border-bottom: 1px solid #ddd;
     font-size: clamp(10px, 1vw, 14px);
-    display: none;
+    display: none; /* vigtigt */
   }
 
   /* 📱 MOBIL */
@@ -196,27 +197,32 @@
 
   // === DROPDOWN LOGIK ===
   var items = document.querySelectorAll('.dropdown-list li');
-  var index = 0;
-  var direction = "down";
+var index = 0;
+var direction = "down";
 
-  function runDropdown() {
+function runDropdown() {
 
-    if (direction === "down") {
-      if (index < items.length) {
-        items[index].style.display = "block";
-        index++;
-      } else {
-        direction = "up";
-      }
+  if (direction === "down") {
+    if (index < items.length) {
+      items[index].style.display = "block";
+      index++;
     } else {
-      if (index > 0) {
-        index--;
-        items[index].style.display = "none";
-      } else {
-        direction = "down";
-      }
+      direction = "up";
+    }
+  } else {
+    if (index > 0) {
+      index--;
+      items[index].style.display = "none";
+    } else {
+      direction = "down";
     }
   }
+}
+
+/* starter efter VIDEN OM animation */
+setTimeout(function () {
+  setInterval(runDropdown, 650); // 👈 tempo (vigtig!)
+}, 3000);
 
   setTimeout(function () {
     setInterval(runDropdown, 500);
