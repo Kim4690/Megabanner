@@ -240,7 +240,7 @@ function startLoop() {
   // start dropdown efter zoom
   setTimeout(function () {
 
-    var dropdownInterval = setInterval(runDropdown, 600);
+    var dropdownInterval = setInterval(runDropdown, 800);
 
     // stop dropdown efter gennemløb
     setTimeout(function () {
