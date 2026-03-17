@@ -147,33 +147,36 @@
   }
 
   /* DROPDOWN */
-  .fake-dropdown {
-    position: absolute;
-    top: 20%;
-    right: 6%;
-    width: clamp(180px, 18vw, 280px);
-  }
+/* container */
+.fake-dropdown {
+  width: clamp(180px, 18vw, 280px);
+}
 
-  .dropdown-label {
-    color: #003f7a;
-    font-size: clamp(10px, 1vw, 14px);
-    margin-bottom: 6px;
-  }
+/* header */
+.dropdown-header {
+  background: #e5e5e5;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-  .dropdown-header {
-    background: #e5e5e5;
-    padding: 10px;
-    font-size: clamp(10px, 1vw, 14px);
-  }
+/* liste */
+.dropdown-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
-   .dropdown-list li {
-    background: #f2f2f2;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    font-size: clamp(10px, 1vw, 14px);
-    display: none; /* vigtigt */
-  }
+/* items */
+.dropdown-list li {
+  background: #f2f2f2;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 
+  width: 100%;
+  box-sizing: border-box; /* 🔥 vigtig */
+  display: none;
+}
   /* 📱 MOBIL */
   @media (max-width: 768px) {
 
@@ -221,7 +224,7 @@ function runDropdown() {
 
 /* starter efter VIDEN OM animation */
 setTimeout(function () {
-  setInterval(runDropdown, 650); // 👈 tempo (vigtig!)
+  setInterval(runDropdown, 700); // 👈 tempo (vigtig!)
 }, 3000);
 
   setTimeout(function () {
