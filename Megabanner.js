@@ -24,7 +24,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url('banner.jpg') right center / cover no-repeat;
+  background: url('Viden om bg billede.jpg') right center / cover no-repeat;
 }
 
 /* OVERLAY (mørk venstre side) */
