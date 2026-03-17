@@ -1,67 +1,79 @@
 (function () {
 
-  // === SETTINGS ===
   var clickUrl = "https://bygtek.dk";
   var image = "viden-om-bg.jpg";
 
-  // === INJECT HTML ===
-  var bannerHTML = `
-  <div class="banner-wrapper">
+  // === HTML ===
+  var html = `
+  <div class="banner">
 
-    <div class="banner">
+    <div class="banner-bg"></div>
 
-      <div class="banner-bg"></div>
+    <div class="banner-content">
 
-      <div class="banner-content">
-        <div class="guide-text">
-          Find alle fagsektioner under <strong>VIDEN OM</strong>
-        </div>
-
-        <div class="cta">SE ALLE FAGSEKTIONER</div>
+      <div class="guide-text">
+        Find alle fagsektioner under <strong>VIDEN OM</strong>
       </div>
 
-      <!-- MODAL -->
-      <div class="banner-modal" id="bannerModal">
-        <div class="modal-content">
+      <div class="cta">SE ALLE FAGSEKTIONER</div>
 
-          <span class="close">&times;</span>
-
-          <h2>Tak for din interesse</h2>
-
-          <p>
-            Kontakt:<br><br>
-            <strong>Kim Anker</strong><br>
-            kim@odsgard.dk<br>
-            26 25 51 22
-          </p>
-
-          <div class="modal-cta">GÅ VIDERE</div>
-
-        </div>
+      <!-- DROPDOWN -->
+      <div class="fake-dropdown">
+        <div class="dropdown-header">VIDEN OM ☰</div>
+        <ul class="dropdown-list">
+          <li>TAG</li>
+          <li>FACADER</li>
+          <li>INDEKLIMA</li>
+          <li>ISOLERING</li>
+          <li>TRÆ</li>
+          <li>VVS</li>
+        </ul>
       </div>
 
+    </div>
+
+    <!-- DIT OVERLAY -->
+    <div class="banner-modal" id="bannerModal">
+      <div class="modal-content">
+
+        <span class="close">&times;</span>
+
+        <h2>Tak for din interesse</h2>
+
+        <p>
+        Tak for at du klikkede på banneret på fagsektionen.<br><br>
+        Du er meget velkommen til at kontakte:
+        </p>
+
+        <div class="contact-box">
+          <strong>Kim Anker</strong><br>
+          kim@odsgard.dk<br>
+          26 25 51 22
+        </div>
+
+        <p style="margin-top:20px;">
+        for flere informationer om markedsføring på BygTek.dk.
+        </p>
+
+        <div class="modal-cta">GÅ VIDERE</div>
+
+      </div>
     </div>
 
   </div>
   `;
 
-  document.body.insertAdjacentHTML("beforeend", bannerHTML);
+  document.body.insertAdjacentHTML("beforeend", html);
 
-  // === INJECT CSS ===
+  // === CSS ===
   var style = document.createElement("style");
   style.innerHTML = `
-  .banner-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
   .banner {
     position: relative;
     width: 1920px;
     height: 600px;
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     cursor: pointer;
   }
 
@@ -76,12 +88,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to right,
-      rgba(0,0,0,0.75),
-      rgba(0,0,0,0.4),
-      rgba(0,0,0,0)
-    );
+    background: linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.2), rgba(0,0,0,0));
   }
 
   .banner-content {
@@ -106,6 +113,40 @@
     color: #fff;
     padding: 12px 18px;
     font-size: 14px;
+  }
+
+  /* DROPDOWN */
+  .fake-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 5%;
+    width: 260px;
+  }
+
+  .dropdown-header {
+    background: #e5e5e5;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  .dropdown-list {
+    background: #f2f2f2;
+    list-style: none;
+    overflow: hidden;
+    max-height: 0;
+    animation: dropdown 5s infinite;
+  }
+
+  .dropdown-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  @keyframes dropdown {
+    0% { max-height: 0; }
+    40% { max-height: 300px; }
+    80% { max-height: 300px; }
+    100% { max-height: 0; }
   }
 
   /* MODAL */
@@ -140,7 +181,12 @@
     top: 10px;
     right: 12px;
     cursor: pointer;
-    font-size: 18px;
+  }
+
+  .contact-box {
+    background: #f2f2f2;
+    padding: 10px;
+    margin-top: 10px;
   }
 
   .modal-cta {
@@ -148,12 +194,11 @@
     background: #007ac3;
     color: #fff;
     padding: 10px;
-    cursor: pointer;
   }
   `;
   document.head.appendChild(style);
 
-  // === LOGIC ===
+  // === LOGIK ===
   var banner = document.querySelector('.banner');
   var modal = document.getElementById('bannerModal');
   var closeBtn = document.querySelector('.close');
@@ -169,15 +214,15 @@
     }
   });
 
-  closeBtn.addEventListener('click', function (e) {
+  closeBtn.onclick = function(e) {
     e.stopPropagation();
     modal.classList.remove('active');
     firstClick = false;
-  });
+  };
 
-  ctaBtn.addEventListener('click', function (e) {
+  ctaBtn.onclick = function(e) {
     e.stopPropagation();
     window.open(clickUrl, "_blank");
-  });
+  };
 
 })();
