@@ -81,7 +81,7 @@
   .banner-bg {
     position: absolute;
     inset: 0;
-    background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/viden-om-bg.jpg') right center / cover no-repeat;
+    background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/Megabanner-bg.jpg') right center / cover no-repeat;
   }
 
   .banner::after {
