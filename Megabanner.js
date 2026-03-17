@@ -23,9 +23,12 @@
           <li>TAG</li>
           <li>FACADER</li>
           <li>INDEKLIMA</li>
+          <li>ENTREPRENØR</li>
           <li>ISOLERING</li>
           <li>TRÆ</li>
           <li>VVS</li>
+          <li>KLOAK</li>
+          <li>SE RESTEN PÅ BYGTEK.DK</li>
         </ul>
       </div>
 
