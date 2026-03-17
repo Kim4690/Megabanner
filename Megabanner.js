@@ -202,6 +202,7 @@
 
   // === DROPDOWN LOGIK ===
   var items = document.querySelectorAll('.dropdown-list li');
+  if (!items.length) return;
 var index = 0;
 var direction = "down";
 
