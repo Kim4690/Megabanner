@@ -15,12 +15,12 @@
         <div class="big-text-static">VIDEN OM</div>
 
         <div class="guide-text">
-          Vi har 15 fagsektioner med nyheder, artikler 
-          og virksomheder.
+        Vi har 15 fagsektioner med nyheder, artikler<br>
+        og virksomheder.
         </div>
 
         <div class="cta">
-          Se alle fagsektionerne under VIDEN OM, 
+          Se alle fagsektionerne under VIDEN OM,<br> 
           der er vist under BygTek logoet
         </div>
 
