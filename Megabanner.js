@@ -183,7 +183,7 @@
   opacity: 0;
   transform: translateY(-6px);
 
-  animation: dropdownItem 12s infinite;
+  animation: dropdownItem 14s infinite;
 }
 
 /* 🔽 ÅBNER (top → bund, langsommere) */
@@ -320,8 +320,9 @@
     100% { opacity: 0; }
   }
 
-  .dropdown-list li:hover {
-    background: #e6e6e6;
+.dropdown-list li:hover {
+  background: #e6e6e6;
+}
   }
 
   /* MODAL */
