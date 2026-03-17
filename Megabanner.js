@@ -89,19 +89,22 @@
 
   /* 🔥 ISOLERINGS-STYLE OVERLAY */
   .banner::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to right,
-      rgba(0,0,0,0.85) 0%,
-      rgba(0,0,0,0.65) 30%,
-      rgba(0,0,0,0.35) 55%,
-      rgba(0,0,0,0.15) 75%,
-      rgba(0,0,0,0) 100%
-    );
-    z-index: 1;
-  }
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.85) 0%,
+    rgba(0,0,0,0.75) 20%,
+    rgba(0,0,0,0.55) 40%,
+    rgba(0,0,0,0.30) 60%,
+    rgba(0,0,0,0.10) 80%,
+    rgba(0,0,0,0.00) 100%
+  );
+
+  z-index: 1;
+}
 
   .banner-content {
     position: relative;
