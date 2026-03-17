@@ -149,9 +149,8 @@
   /* DROPDOWN */
 .fake-dropdown {
   position: absolute;
-  top: 30%;       /* justér hvis nødvendigt */
+  top: 30%;
   right: 6%;
-  transform: translateY(-50%);
   width: clamp(180px, 18vw, 280px);
 }
 
