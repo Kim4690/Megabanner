@@ -1,12 +1,11 @@
 (function () {
 
   var clickUrl = "https://bygtek.dk";
-  var image = "viden-om-bg.jpg";
 
-  // === HTML ===
   var html = `
   <div class="banner">
 
+    <!-- BAGGRUND -->
     <div class="banner-bg"></div>
 
     <div class="banner-content">
@@ -75,20 +74,33 @@
     overflow: hidden;
     font-family: Arial;
     cursor: pointer;
+    
+    /* fallback baggrund (ALTID virker) */
+    background: #1a1a1a;
   }
 
+  /* BILLEDE (valgfrit – kan fejle uden at ødelægge layout) */
   .banner-bg {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: url('${image}') right center / cover no-repeat;
+    inset: 0;
+    background: url('viden-om-bg.jpg') right center / cover no-repeat;
+    opacity: 0.9;
   }
 
+  /* 🔥 ISOLERINGS-STYLE OVERLAY */
   .banner::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.2), rgba(0,0,0,0));
+    background: linear-gradient(
+      to right,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0.65) 30%,
+      rgba(0,0,0,0.35) 55%,
+      rgba(0,0,0,0.15) 75%,
+      rgba(0,0,0,0) 100%
+    );
+    z-index: 1;
   }
 
   .banner-content {
@@ -100,9 +112,11 @@
   .guide-text {
     position: absolute;
     left: 6%;
-    bottom: 20%;
+    bottom: 22%;
     color: #fff;
     font-size: 30px;
+    max-width: 500px;
+    line-height: 1.2;
   }
 
   .cta {
@@ -113,20 +127,21 @@
     color: #fff;
     padding: 12px 18px;
     font-size: 14px;
+    font-weight: 600;
   }
 
   /* DROPDOWN */
   .fake-dropdown {
     position: absolute;
     top: 60px;
-    right: 5%;
+    right: 6%;
     width: 260px;
   }
 
   .dropdown-header {
     background: #e5e5e5;
-    padding: 10px;
-    font-weight: bold;
+    padding: 12px;
+    font-weight: 600;
   }
 
   .dropdown-list {
@@ -144,8 +159,8 @@
 
   @keyframes dropdown {
     0% { max-height: 0; }
-    40% { max-height: 300px; }
-    80% { max-height: 300px; }
+    40% { max-height: 320px; }
+    80% { max-height: 320px; }
     100% { max-height: 0; }
   }
 
