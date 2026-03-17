@@ -215,7 +215,7 @@ function runDropdown() {
     } else {
       direction = "up";
     }
-  } eif (!items || items.length === 0) return;lse {
+  } else {
     if (index > 0) {
       index--;
       items[index].style.display = "none";
@@ -223,6 +223,7 @@ function runDropdown() {
       direction = "down";
     }
   }
+
 }
 
 function startLoop() {
