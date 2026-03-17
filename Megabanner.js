@@ -5,20 +5,23 @@
   var html = `
   <div class="banner">
 
-    <!-- BAGGRUND -->
     <div class="banner-bg"></div>
 
     <div class="banner-content">
 
+      <div class="big-text">VIDEN OM</div>
+
       <div class="guide-text">
-        Vi har 15 fagsektioner, med nyheder, artikler og virksomheder - sikkert også en inden for dit fagområde. Se fagsektionerne under<br><br><strong>VIDEN OM</strong>
+        Vi har 15 fagsektioner med nyheder, artikler og virksomheder.<br><br>
+        Find din fagsektion under <strong>VIDEN OM</strong>
       </div>
 
       <div class="cta">SE ALLE FAGSEKTIONER</div>
 
-      <!-- DROPDOWN -->
       <div class="fake-dropdown">
+        <div class="dropdown-label">Se din fagsektion her:</div>
         <div class="dropdown-header">VIDEN OM ☰</div>
+
         <ul class="dropdown-list">
           <li>TAG</li>
           <li>FACADER</li>
@@ -28,13 +31,12 @@
           <li>TRÆ</li>
           <li>VVS</li>
           <li>KLOAK</li>
-          <li>SE RESTEN PÅ BYGTEK.DK</li>
         </ul>
       </div>
 
     </div>
 
-    <!-- DIT OVERLAY -->
+    <!-- MODAL -->
     <div class="banner-modal" id="bannerModal">
       <div class="modal-content">
 
@@ -43,7 +45,6 @@
         <h2>Tak for din interesse</h2>
 
         <p>
-        Tak for at du klikkede på banneret på fagsektionen.<br><br>
         Du er meget velkommen til at kontakte:
         </p>
 
@@ -52,10 +53,6 @@
           kim@odsgard.dk<br>
           26 25 51 22
         </div>
-
-        <p style="margin-top:20px;">
-        for flere informationer om markedsføring på BygTek.dk.
-        </p>
 
         <div class="modal-cta">GÅ VIDERE</div>
 
@@ -70,6 +67,7 @@
   // === CSS ===
   var style = document.createElement("style");
   style.innerHTML = `
+
   .banner {
     position: relative;
     width: 1920px;
@@ -77,37 +75,28 @@
     overflow: hidden;
     font-family: Arial;
     cursor: pointer;
-    
-    /* fallback baggrund (ALTID virker) */
-    background: #1a1a1a;
   }
 
-  /* BILLEDE (valgfrit – kan fejle uden at ødelægge layout) */
   .banner-bg {
     position: absolute;
     inset: 0;
-    background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/Megabanner-bg.jpg') right center / cover no-repeat;
-    opacity: 0.9;
+    background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/viden-om-bg.jpg') right center / cover no-repeat;
   }
 
-  /* 🔥 ISOLERINGS-STYLE OVERLAY */
+  /* BLÅ OVERLAY */
   .banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.85) 0%,
-    rgba(0,0,0,0.75) 20%,
-    rgba(0,0,0,0.55) 40%,
-    rgba(0,0,0,0.30) 60%,
-    rgba(0,0,0,0.10) 80%,
-    rgba(0,0,0,0.00) 100%
-  );
-
-  z-index: 1;
-}
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0,60,120,0.75),
+      rgba(0,90,160,0.5),
+      rgba(0,120,200,0.2),
+      rgba(0,0,0,0)
+    );
+    z-index: 1;
+  }
 
   .banner-content {
     position: relative;
@@ -115,33 +104,49 @@
     height: 100%;
   }
 
+  /* STOR BAGGRUNDSTEKST */
+  .big-text {
+    position: absolute;
+    left: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 140px;
+    color: rgba(255,255,255,0.08);
+    font-weight: 700;
+  }
+
   .guide-text {
     position: absolute;
     left: 6%;
     bottom: 22%;
     color: #fff;
-    font-size: 30px;
+    font-size: 28px;
     max-width: 500px;
-    line-height: 1.2;
   }
 
   .cta {
     position: absolute;
     left: 6%;
     bottom: 10%;
-    background: #007ac3;
-    color: #fff;
+    background: #ffcc00;
+    color: #000;
     padding: 12px 18px;
-    font-size: 14px;
     font-weight: 600;
   }
 
   /* DROPDOWN */
   .fake-dropdown {
     position: absolute;
-    top: 60px;
-    right: 6%;
-    width: 260px;
+    top: 40%;
+    right: 8%;
+    transform: translateY(-50%);
+    width: 280px;
+  }
+
+  .dropdown-label {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 6px;
   }
 
   .dropdown-header {
@@ -153,21 +158,39 @@
   .dropdown-list {
     background: #f2f2f2;
     list-style: none;
-    overflow: hidden;
-    max-height: 0;
-    animation: dropdown 10s infinite;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: dropdownFade 6s infinite;
+  }
+
+  @keyframes dropdownFade {
+    0% { opacity: 0; transform: translateY(-10px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
   }
 
   .dropdown-list li {
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    opacity: 0;
   }
 
-  @keyframes dropdown {
-    0% { max-height: 0; }
-    40% { max-height: 320px; }
-    80% { max-height: 320px; }
-    100% { max-height: 0; }
+  .dropdown-list li:nth-child(1) { animation: itemFade 0.4s forwards 1.2s; }
+  .dropdown-list li:nth-child(2) { animation: itemFade 0.4s forwards 1.4s; }
+  .dropdown-list li:nth-child(3) { animation: itemFade 0.4s forwards 1.6s; }
+  .dropdown-list li:nth-child(4) { animation: itemFade 0.4s forwards 1.8s; }
+  .dropdown-list li:nth-child(5) { animation: itemFade 0.4s forwards 2.0s; }
+  .dropdown-list li:nth-child(6) { animation: itemFade 0.4s forwards 2.2s; }
+  .dropdown-list li:nth-child(7) { animation: itemFade 0.4s forwards 2.4s; }
+  .dropdown-list li:nth-child(8) { animation: itemFade 0.4s forwards 2.6s; }
+
+  @keyframes itemFade {
+    to { opacity: 1; }
+  }
+
+  .dropdown-list li:hover {
+    background: #e6e6e6;
   }
 
   /* MODAL */
@@ -216,6 +239,7 @@
     color: #fff;
     padding: 10px;
   }
+
   `;
   document.head.appendChild(style);
 
