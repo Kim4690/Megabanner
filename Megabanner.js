@@ -202,7 +202,7 @@
 
   // === DROPDOWN LOGIK ===
   var items = document.querySelectorAll('.dropdown-list li');
-  if (!items.length) return;
+  if (!items || items.length === 0) return;
 var index = 0;
 var direction = "down";
 
@@ -215,7 +215,7 @@ function runDropdown() {
     } else {
       direction = "up";
     }
-  } else {
+  } eif (!items || items.length === 0) return;lse {
     if (index > 0) {
       index--;
       items[index].style.display = "none";
@@ -227,16 +227,21 @@ function runDropdown() {
 
 function startLoop() {
 
-  // reset dropdown
-  items.forEach(el => el.style.display = "none");
+  // reset dropdown (FIXED – uden forEach)
+  for (var i = 0; i < items.length; i++) {
+    items[i].style.display = "none";
+  }
+
   index = 0;
   direction = "down";
 
   // restart VIDEN OM animation
   var text = document.querySelector('.big-text');
-  text.style.animation = "none";
-  text.offsetHeight; // reset trick
-  text.style.animation = "zoomText 3s forwards";
+  if (text) {
+    text.style.animation = "none";
+    text.offsetHeight;
+    text.style.animation = "zoomText 3s forwards";
+  }
 
   // start dropdown efter zoom
   setTimeout(function () {
