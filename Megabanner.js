@@ -12,14 +12,16 @@
       <div class="big-text">VIDEN OM</div>
 
       <div class="guide-text">
-        Vi har 15 fagsektioner med nyheder, artikler og virksomheder.<br><br>
-        Find din fagsektion under <strong>VIDEN OM</strong>
+        Vi har 15 fagsektioner med nyheder, artikler og virksomheder.
       </div>
 
-      <div class="cta">SE ALLE FAGSEKTIONERNE</div>
+      <div class="cta">
+        Se alle fagsektionerne under Viden om, der er vist under BygTek logoet
+      </div>
 
       <div class="fake-dropdown">
         <div class="dropdown-label">Se din fagsektion her:</div>
+
         <div class="dropdown-header">VIDEN OM ☰</div>
 
         <ul class="dropdown-list">
@@ -31,13 +33,13 @@
           <li>TRÆ</li>
           <li>VVS</li>
           <li>KLOAK</li>
-          <li><strong>SE ØVRIGE UNDER VIDEN OM</strong></li>
+          <li><strong>SE ØVRIGE UNDER</strong></li>
+          <li><strong>VIDEN OM</strong></li>
         </ul>
       </div>
 
     </div>
 
-    <!-- MODAL -->
     <div class="banner-modal" id="bannerModal">
       <div class="modal-content">
 
@@ -82,7 +84,7 @@
     background: url('https://raw.githubusercontent.com/Kim4690/Megabanner/main/Megabanner-bg.jpg') right center / cover no-repeat;
   }
 
-  /* BLÅ OVERLAY (justeret) */
+  /* BLÅ OVERLAY */
   .banner::after {
     content: "";
     position: absolute;
@@ -103,7 +105,6 @@
     height: 100%;
   }
 
-  /* STOR BAGGRUNDSTEKST */
   .big-text {
     position: absolute;
     left: 6%;
@@ -117,69 +118,65 @@
   .guide-text {
     position: absolute;
     left: 6%;
-    bottom: 22%;
+    bottom: 30%;
     color: #fff;
-    font-size: 28px;
+    font-size: 26px;
     max-width: 520px;
   }
 
-  /* CTA */
   .cta {
     position: absolute;
     left: 6%;
     bottom: 10%;
     background: #ffcc00;
     color: #000;
-    padding: 12px 18px;
+    padding: 14px 20px;
     font-weight: 700;
+    max-width: 420px;
   }
 
   /* DROPDOWN */
   .fake-dropdown {
     position: absolute;
-    top: 40%;
+    top: 45%;
     right: 8%;
     transform: translateY(-50%);
     width: 280px;
   }
 
-  /* 🔥 NY FARVE (ikke hvid) */
+  /* MØRKERE BLÅ */
   .dropdown-label {
-    color: #d0e7ff;
+    color: #003f7a;
     font-size: 14px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    font-weight: 600;
   }
 
   .dropdown-header {
     background: #e5e5e5;
     padding: 12px;
     font-weight: 600;
+    margin-top: 10px;
   }
 
+  /* 👇 DEN VIGTIGE DEL */
   .dropdown-list {
-    background: #f2f2f2;
     list-style: none;
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    animation: dropdownOpen 6s infinite;
-  }
-
-  @keyframes dropdownOpen {
-    0% { max-height: 0; opacity: 0; }
-    15% { max-height: 340px; opacity: 1; }
-    85% { max-height: 340px; opacity: 1; }
-    100% { max-height: 0; opacity: 0; }
+    margin: 0;
+    padding: 0;
   }
 
   .dropdown-list li {
+    background: #f2f2f2;
     padding: 10px;
     border-bottom: 1px solid #ddd;
+
     opacity: 0;
     transform: translateY(-5px);
-    animation: itemLoop 6s infinite;
+    animation: dropItem 8s infinite;
   }
 
+  /* STAGGER (opbygning oppefra) */
   .dropdown-list li:nth-child(1) { animation-delay: 0.2s; }
   .dropdown-list li:nth-child(2) { animation-delay: 0.4s; }
   .dropdown-list li:nth-child(3) { animation-delay: 0.6s; }
@@ -189,11 +186,13 @@
   .dropdown-list li:nth-child(7) { animation-delay: 1.4s; }
   .dropdown-list li:nth-child(8) { animation-delay: 1.6s; }
   .dropdown-list li:nth-child(9) { animation-delay: 1.8s; }
+  .dropdown-list li:nth-child(10) { animation-delay: 2.0s; }
 
-  @keyframes itemLoop {
-    0% { opacity: 0; transform: translateY(-5px); }
+  @keyframes dropItem {
+    0% { opacity: 0; transform: translateY(-10px); }
     10% { opacity: 1; transform: translateY(0); }
-    80% { opacity: 1; }
+    70% { opacity: 1; }
+    85% { opacity: 0; transform: translateY(-10px); }
     100% { opacity: 0; }
   }
 
