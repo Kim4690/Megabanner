@@ -17,7 +17,7 @@
       </div>
 
       <div class="cta">
-        Se alle fagsektionerne under Viden om, der er vist under BygTek logoet
+        Se alle fagsektionerne under VIDEN OM, der er vist under BygTek logoet
       </div>
 
       <div class="fake-dropdown">
