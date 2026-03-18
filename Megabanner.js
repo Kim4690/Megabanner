@@ -134,6 +134,9 @@
   display: none;
 }
 
+`;
+document.head.appendChild(style);
+
     // DROPDOWN
     var items = document.querySelectorAll('.dropdown-list li');
     var index = 0;
