@@ -144,24 +144,28 @@ document.head.appendChild(style);
 
     function runDropdown() {
 
-      if (direction === "down") {
-        if (index < items.length) {
-          items[index].style.display = "block";
-          index++;
-        } else {
-          direction = "up";
-        }
-      } else {
-        if (index > 0) {
-          index--;
-          items[index].style.display = "none";
-        } else {
-          direction = "down";
-        }
-      }
+  if (direction === "down") {
+
+    if (index < items.length) {
+      items[index].style.display = "block";
+      index++;
+    } else {
+      direction = "reset";
     }
 
-    function loop() {
+  } else if (direction === "reset") {
+
+    // 🔥 fjern ALLE på én gang
+    for (var i = 0; i < items.length; i++) {
+      items[i].style.display = "none";
+    }
+
+    // reset til næste loop
+    index = 0;
+    direction = "down";
+  }
+
+}
 
       // reset
       for (var i = 0; i < items.length; i++) {
