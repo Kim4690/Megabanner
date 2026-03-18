@@ -129,20 +129,31 @@
     var items = document.querySelectorAll('.dropdown-list li');
     var index = 0;
 
-    function showNext() {
-      if (index < items.length) {
-        items[index].style.display = "block";
-        index++;
-      } else {
-        // reset alle på én gang
-        setTimeout(function () {
-          for (var i = 0; i < items.length; i++) {
-            items[i].style.display = "none";
-          }
-          index = 0;
-        }, 1000);
+   function showNext() {
+  if (index < items.length) {
+    items[index].style.display = "block";
+    index++;
+  } else {
+    // reset alle på én gang
+    setTimeout(function () {
+
+      for (var i = 0; i < items.length; i++) {
+        items[i].style.display = "none";
       }
-    }
+
+      index = 0;
+
+      // 🔥 GENSTART VIDEN OM ANIMATION
+      var text = document.querySelector('.big-text');
+      if (text) {
+        text.style.animation = "none";
+        text.offsetHeight; // trigger reflow
+        text.style.animation = "zoomText 3s forwards";
+      }
+
+    }, 1000);
+  }
+}
 
     // starter efter tekst animation
     setTimeout(function () {
