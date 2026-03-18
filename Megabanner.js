@@ -146,7 +146,7 @@
 
     // starter efter tekst animation
     setTimeout(function () {
-      setInterval(showNext, 600);
+      setInterval(showNext, 800);
     }, 3000);
   }
 
