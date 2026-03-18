@@ -55,8 +55,8 @@
 
             <p>
               Tak for at du klikkede på banneret på fagsektionen.<br><br>
-              Denne plads kan blive din!<br>
-              Dit budskab vises HVER GANG - Din plads 100%<br>
+              Denne plads kan blive din!<br><br>
+              Dit budskab vises HVER GANG - Der er kun en plads<br><br>
               Du er meget velkommen til at kontakte:
             </p>
 
