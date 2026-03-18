@@ -23,7 +23,7 @@
             VIDEN OM finder du under BygTek logoet.
           </div>
 
-          <div class="fake-dropdown">
+          <div class="fake-dropdown hidden">
             <div class="dropdown-label">Se fagsektionerne her:</div>
             <div class="dropdown-header">VIDEN OM ☰</div>
 
@@ -102,6 +102,18 @@
       .fake-dropdown {
         position:absolute; top:20%; right:6%;
         width:clamp(180px,18vw,280px);
+        transition:opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .fake-dropdown.hidden {
+        opacity:0;
+        transform:translateY(-10px);
+        pointer-events:none;
+      }
+
+      .fake-dropdown.show {
+        opacity:1;
+        transform:translateY(0);
       }
 
       .dropdown-header {
@@ -125,102 +137,58 @@
     `;
     document.head.appendChild(style);
 
-    // === DROPDOWN LOGIK ===
+    // === LOGIK ===
     var items = document.querySelectorAll('.dropdown-list li');
-var index = 0;
-var interval = null;
+    var dropdown = document.querySelector('.fake-dropdown');
+    var index = 0;
+    var interval;
 
-function startDropdown() {
+    function startCycle() {
 
-  index = 0;
+      // restart tekst
+      var text = document.querySelector('.big-text');
+      text.style.animation = "none";
+      text.offsetHeight;
+      text.style.animation = "zoomText 3s forwards";
 
-  // ryd alt
-  for (var i = 0; i < items.length; i++) {
-    items[i].style.display = "none";
-  }
+      // skjul dropdown
+      dropdown.classList.remove("show");
+      dropdown.classList.add("hidden");
 
-  interval = setInterval(function () {
-
-    if (index < items.length) {
-
-      items[index].style.display = "block";
-      index++;
-
-    } else {
-
-      // stop dropdown
-      clearInterval(interval);
-
-      // reset efter pause
-      setTimeout(function () {
-
-        for (var i = 0; i < items.length; i++) {
-          items[i].style.display = "none";
-        }
-
-        // 🔥 restart VIDEN OM
-        var text = document.querySelector('.big-text');
-        if (text) {
-          text.style.animation = "none";
-          text.offsetHeight;
-          text.style.animation = "zoomText 3s forwards";
-        }
-
-        // 🔥 start dropdown igen EFTER tekst
-        setTimeout(startDropdown, 3000);
-
-      }, 1200);
-    }
-
-  }, 800); // tempo
-}
-
-// start første gang efter intro
-setTimeout(startDropdown, 3000);
-      // reset alle
+      // ryd liste
       for (var i = 0; i < items.length; i++) {
         items[i].style.display = "none";
       }
 
       index = 0;
 
-      // 🔥 restart VIDEN OM
-      var text = document.querySelector('.big-text');
-      if (text) {
-        text.style.animation = "none";
-        text.offsetHeight;
-        text.style.animation = "zoomText 3s forwards";
-      }
-
-      // 🔥 vent før dropdown starter igen
+      // efter intro → vis dropdown
       setTimeout(function () {
-        isPaused = false;
-      }, 3000); // matcher animation
 
-    }, 1000);
+        dropdown.classList.remove("hidden");
+        dropdown.classList.add("show");
+
+        interval = setInterval(function () {
+
+          if (index < items.length) {
+            items[index].style.display = "block";
+            index++;
+          } else {
+
+            clearInterval(interval);
+
+            setTimeout(startCycle, 2000); // loop
+
+          }
+
+        }, 800);
+
+      }, 3000);
+    }
+
+    startCycle();
   }
-}
-      index = 0;
 
-      // 🔥 GENSTART VIDEN OM ANIMATION
-      var text = document.querySelector('.big-text');
-      if (text) {
-        text.style.animation = "none";
-        text.offsetHeight; // trigger reflow
-        text.style.animation = "zoomText 3s forwards";
-      }
-
-    }, 1000);
-  }
-}
-
-    // starter efter tekst animation
-    setTimeout(function () {
-      setInterval(showNext, 800);
-    }, 3000);
-  }
-
-  // sikker init
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initBanner);
   } else {
