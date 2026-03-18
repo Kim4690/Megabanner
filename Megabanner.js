@@ -129,18 +129,44 @@
     var items = document.querySelectorAll('.dropdown-list li');
     var index = 0;
 
-   function showNext() {
+   var isPaused = false;
+
+function showNext() {
+
+  if (isPaused) return; // 🔥 stopper overlap
+
   if (index < items.length) {
     items[index].style.display = "block";
     index++;
   } else {
-    // reset alle på én gang
+
+    isPaused = true; // 🔥 pause dropdown
+
     setTimeout(function () {
 
+      // reset alle
       for (var i = 0; i < items.length; i++) {
         items[i].style.display = "none";
       }
 
+      index = 0;
+
+      // 🔥 restart VIDEN OM
+      var text = document.querySelector('.big-text');
+      if (text) {
+        text.style.animation = "none";
+        text.offsetHeight;
+        text.style.animation = "zoomText 3s forwards";
+      }
+
+      // 🔥 vent før dropdown starter igen
+      setTimeout(function () {
+        isPaused = false;
+      }, 3000); // matcher animation
+
+    }, 1000);
+  }
+}
       index = 0;
 
       // 🔥 GENSTART VIDEN OM ANIMATION
