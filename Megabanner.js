@@ -44,6 +44,33 @@
           </div>
 
         </div>
+
+        <!-- OVERLAY -->
+        <div class="banner-modal" id="bannerModal">
+          <div class="modal-content">
+
+            <div class="close">&times;</div>
+
+            <h2>Tak for din interesse</h2>
+
+            <p>
+              Tak for at du klikkede på banneret på fagsektionen.<br><br>
+              Du er meget velkommen til at kontakte:
+            </p>
+
+            <div class="contact-box">
+              <strong>Kim Anker</strong><br>
+              kim@odsgard.dk<br>
+              26 25 51 22
+            </div>
+
+            <p style="margin-top:20px;">
+              for flere informationer om markedsføring på BygTek.dk.
+            </p>
+
+          </div>
+        </div>
+
       </div>
     </div>
     `;
@@ -54,7 +81,7 @@
     var style = document.createElement("style");
     style.innerHTML = `
       .banner-wrapper { width:100%; max-width:1920px; margin:0 auto; }
-      .banner { position:relative; width:100%; aspect-ratio:1920/600; overflow:hidden; font-family:Arial; }
+      .banner { position:relative; width:100%; aspect-ratio:1920/600; overflow:hidden; font-family:Arial; cursor:pointer; }
 
       .banner-bg {
         position:absolute; inset:0;
@@ -68,7 +95,6 @@
 
       .banner-content { position:relative; z-index:2; height:100%; }
 
-      /* STOR TEKST */
       .big-text {
         position:absolute; left:6%; top:42%;
         transform:translateY(-50%) scale(0.2);
@@ -96,39 +122,26 @@
         max-width:40%;
       }
 
-      /* DROPDOWN (HØJERE OP) */
       .fake-dropdown {
         position:absolute;
         top:12%;
         right:6%;
         width:clamp(180px,18vw,280px);
-        transition:opacity 0.5s ease, transform 0.5s ease;
+        transition:0.4s;
       }
 
-      .fake-dropdown.hidden {
-        opacity:0;
-        transform:translateY(-10px);
-        pointer-events:none;
-      }
+      .fake-dropdown.hidden { opacity:0; transform:translateY(-10px); }
+      .fake-dropdown.show { opacity:1; transform:translateY(0); }
 
-      .fake-dropdown.show {
-        opacity:1;
-        transform:translateY(0);
-      }
-
-      /* LABEL (IKKE BOLD + MINDRE) */
       .dropdown-label {
         margin-bottom:6px;
-        font-size:clamp(10px,0.9vw,13px);
-        font-weight:400;
+        font-size:12px;
         color:#003f7a;
       }
 
       .dropdown-header {
         background:#e5e5e5;
         padding:10px;
-        margin:0;
-        font-size:clamp(11px,1vw,14px);
       }
 
       .dropdown-list {
@@ -141,11 +154,9 @@
         background:#f2f2f2;
         padding:10px;
         border-bottom:1px solid #ddd;
-        font-size:clamp(11px,1vw,14px);
         display:none;
       }
 
-      /* CTA (NED I BUND + IKKE BOLD) */
       .cta {
         position:absolute;
         right:6%;
@@ -154,14 +165,60 @@
         background:#ffcc00;
         color:#000;
         padding:10px;
-        font-weight:400;
-        font-size:clamp(11px,0.95vw,14px);
+        font-size:13px;
         line-height:1.3;
+      }
+
+      /* OVERLAY */
+      .banner-modal {
+        position:absolute;
+        inset:0;
+        background:rgba(0,0,0,0.75);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        opacity:0;
+        pointer-events:none;
+        transition:.3s;
+        z-index:10;
+      }
+
+      .banner-modal.active {
+        opacity:1;
+        pointer-events:all;
+      }
+
+      .modal-content {
+        background:#163575;
+        color:#fff;
+        padding:40px;
+        width:420px;
+        text-align:center;
+        border-radius:12px;
+        position:relative;
+      }
+
+      .modal-content h2 {
+        color:#ffcc00;
+        margin-bottom:20px;
+      }
+
+      .close {
+        position:absolute;
+        top:12px;
+        right:16px;
+        font-size:22px;
+        cursor:pointer;
+      }
+
+      .contact-box {
+        margin-top:15px;
+        line-height:1.6;
       }
     `;
     document.head.appendChild(style);
 
-    // === LOGIK ===
+    // === DROPDOWN ===
     var items = document.querySelectorAll('.dropdown-list li');
     var dropdown = document.querySelector('.fake-dropdown');
     var index = 0;
@@ -204,6 +261,21 @@
     }
 
     startCycle();
+
+    // === OVERLAY ===
+    var banner = document.querySelector('.banner');
+    var modal = document.getElementById('bannerModal');
+    var closeBtn = document.querySelector('.close');
+
+    banner.addEventListener('click', function () {
+      modal.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      modal.classList.remove('active');
+    });
+
   }
 
   if (document.readyState === "loading") {
