@@ -37,7 +37,7 @@
             </ul>
           </div>
 
-          <!-- CTA UNDER DROPDOWN -->
+          <!-- CTA -->
           <div class="cta">
             Hold musen over VIDEN OM og se alle fagsektionerne.<br> 
             VIDEN OM finder du under BygTek logoet.
@@ -68,6 +68,7 @@
 
       .banner-content { position:relative; z-index:2; height:100%; }
 
+      /* STOR TEKST */
       .big-text {
         position:absolute; left:6%; top:42%;
         transform:translateY(-50%) scale(0.2);
@@ -95,10 +96,10 @@
         max-width:40%;
       }
 
-      /* DROPDOWN (RYKKET OP) */
+      /* DROPDOWN (HØJERE OP) */
       .fake-dropdown {
         position:absolute;
-        top:15%;
+        top:12%;
         right:6%;
         width:clamp(180px,18vw,280px);
         transition:opacity 0.5s ease, transform 0.5s ease;
@@ -115,15 +116,19 @@
         transform:translateY(0);
       }
 
+      /* LABEL (IKKE BOLD + MINDRE) */
       .dropdown-label {
         margin-bottom:6px;
-        font-weight:600;
+        font-size:clamp(10px,0.9vw,13px);
+        font-weight:400;
+        color:#003f7a;
       }
 
       .dropdown-header {
         background:#e5e5e5;
         padding:10px;
         margin:0;
+        font-size:clamp(11px,1vw,14px);
       }
 
       .dropdown-list {
@@ -136,19 +141,22 @@
         background:#f2f2f2;
         padding:10px;
         border-bottom:1px solid #ddd;
+        font-size:clamp(11px,1vw,14px);
         display:none;
       }
 
-      /* CTA UNDER DROPDOWN */
+      /* CTA (NED I BUND + IKKE BOLD) */
       .cta {
         position:absolute;
         right:6%;
-        top:55%; /* 👈 under dropdown */
+        bottom:0;
         width:clamp(180px,18vw,280px);
         background:#ffcc00;
         color:#000;
-        padding:12px;
-        font-weight:700;
+        padding:10px;
+        font-weight:400;
+        font-size:clamp(11px,0.95vw,14px);
+        line-height:1.3;
       }
     `;
     document.head.appendChild(style);
@@ -190,7 +198,7 @@
             setTimeout(startCycle, 2000);
           }
 
-        }, 800);
+        }, 900);
 
       }, 3000);
     }
