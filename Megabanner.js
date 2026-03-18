@@ -20,12 +20,12 @@
           </div>
 
           <div class="cta">
-            Se alle fagsektionerne under VIDEN OM,<br> 
-            der er vist under BygTek logoet
+            Hold musen over VIDEN OM og se alle fagsektionerne.<br> 
+            VIDEN OM finder du under BygTek logoet.
           </div>
 
           <div class="fake-dropdown">
-            <div class="dropdown-label">Se din fagsektion her:</div>
+            <div class="dropdown-label">Se fagsektionerne her:</div>
             <div class="dropdown-header">VIDEN OM ☰</div>
 
             <ul class="dropdown-list">
@@ -101,22 +101,38 @@
       }
 
       .fake-dropdown {
-        position:absolute; top:30%; right:6%;
-        width:clamp(180px,18vw,280px);
-      }
+  position: absolute;
+  top: 20%;
+  right: 6%;
+  width: clamp(180px, 18vw, 280px);
+}
 
-      .dropdown-header {
-        background:#e5e5e5; padding:10px;
-      }
+/* header */
+.dropdown-header {
+  background: #e5e5e5;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0; /* 🔥 vigtig */
+}
 
-      .dropdown-list li {
-        background:#f2f2f2;
-        padding:10px;
-        border-bottom:1px solid #ddd;
-        display:none;
-      }
-    `;
-    document.head.appendChild(style);
+/* liste */
+.dropdown-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* items */
+.dropdown-list li {
+  background: #f2f2f2;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+
+  width: 100%;
+  box-sizing: border-box;
+  display: none;
+}
 
     // DROPDOWN
     var items = document.querySelectorAll('.dropdown-list li');
