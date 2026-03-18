@@ -55,13 +55,15 @@
 
             <p>
               Tak for at du klikkede på banneret på fagsektionen.<br><br>
+              Denne plads kan blive din!<br>
+              Dit budskab vises HVER GANG - Din plads 100%<br>
               Du er meget velkommen til at kontakte:
             </p>
 
             <div class="contact-box">
               <strong>Kim Anker</strong><br>
               kim@odsgard.dk<br>
-              26 25 51 22
+              26 25 51 22 / 46 93 66 22
             </div>
 
             <p style="margin-top:20px;">
