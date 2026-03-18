@@ -164,7 +164,6 @@ document.head.appendChild(style);
     index = 0;
     direction = "down";
   }
-
 }
 
       // reset
