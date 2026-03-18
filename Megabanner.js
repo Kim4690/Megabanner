@@ -167,21 +167,7 @@ document.head.appendChild(style);
 }
 
       // reset
-      for (var i = 0; i < items.length; i++) {
-        items[i].style.display = "none";
-      }
-
-      index = 0;
-      direction = "down";
-
-      var text = document.querySelector('.big-text');
-      if (text) {
-        text.style.animation = "none";
-        text.offsetHeight;
-        text.style.animation = "zoomText 3s forwards";
-      }
-
-      setTimeout(function () {
+         setTimeout(function () {
 
         var interval = setInterval(runDropdown, 700);
 
@@ -193,7 +179,36 @@ document.head.appendChild(style);
       }, 3000);
     }
 
-    loop();
+    function loop() {
+
+  // reset dropdown
+  for (var i = 0; i < items.length; i++) {
+    items[i].style.display = "none";
+  }
+
+  index = 0;
+  direction = "down";
+
+  // restart VIDEN OM animation
+  var text = document.querySelector('.big-text');
+  if (text) {
+    text.style.animation = "none";
+    text.offsetHeight;
+    text.style.animation = "zoomText 3s forwards";
+  }
+
+  // start dropdown efter zoom
+  setTimeout(function () {
+
+    var interval = setInterval(runDropdown, 700);
+
+    setTimeout(function () {
+      clearInterval(interval);
+      setTimeout(loop, 1500);
+    }, 9000);
+
+  }, 3000);
+}
   }
 
   // 🔥 VIGTIGT: vent på DOM
