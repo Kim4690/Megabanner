@@ -1,12 +1,11 @@
 (function () {
 
-  var clickUrl = "https://bygtek.dk";
-
   function initBanner() {
 
     var html = `
     <div class="banner-wrapper">
       <div class="banner">
+
         <div class="banner-bg"></div>
 
         <div class="banner-content">
@@ -49,7 +48,7 @@
 
     document.body.insertAdjacentHTML("beforeend", html);
 
-    // CSS
+    // === CSS ===
     var style = document.createElement("style");
     style.innerHTML = `
       .banner-wrapper { width:100%; max-width:1920px; margin:0 auto; }
@@ -101,117 +100,57 @@
       }
 
       .fake-dropdown {
-  position: absolute;
-  top: 20%;
-  right: 6%;
-  width: clamp(180px, 18vw, 280px);
-}
+        position:absolute; top:20%; right:6%;
+        width:clamp(180px,18vw,280px);
+      }
 
-/* header */
-.dropdown-header {
-  background: #e5e5e5;
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0; /* 🔥 vigtig */
-}
+      .dropdown-header {
+        background:#e5e5e5;
+        padding:10px;
+        margin:0;
+      }
 
-/* liste */
-.dropdown-list {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+      .dropdown-list {
+        list-style:none;
+        margin:0;
+        padding:0;
+      }
 
-/* items */
-.dropdown-list li {
-  background: #f2f2f2;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+      .dropdown-list li {
+        background:#f2f2f2;
+        padding:10px;
+        border-bottom:1px solid #ddd;
+        display:none;
+      }
+    `;
+    document.head.appendChild(style);
 
-  width: 100%;
-  box-sizing: border-box;
-  display: none;
-}
-
-`;
-document.head.appendChild(style);
-
-    // DROPDOWN
+    // === DROPDOWN LOGIK ===
     var items = document.querySelectorAll('.dropdown-list li');
     var index = 0;
-    var direction = "down";
 
-    function runDropdown() {
-
-  if (direction === "down") {
-
-    if (index < items.length) {
-      items[index].style.display = "block";
-      index++;
-    } else {
-      direction = "reset";
-    }
-
-  } else if (direction === "reset") {
-
-    // 🔥 fjern ALLE på én gang
-    for (var i = 0; i < items.length; i++) {
-      items[i].style.display = "none";
-    }
-
-    // reset til næste loop
-    index = 0;
-    direction = "down";
-  }
-}
-
-      // reset
-         setTimeout(function () {
-
-        var interval = setInterval(runDropdown, 700);
-
+    function showNext() {
+      if (index < items.length) {
+        items[index].style.display = "block";
+        index++;
+      } else {
+        // reset alle på én gang
         setTimeout(function () {
-          clearInterval(interval);
-          setTimeout(loop, 1500);
-        }, 9000);
-
-      }, 3000);
+          for (var i = 0; i < items.length; i++) {
+            items[i].style.display = "none";
+          }
+          index = 0;
+        }, 1000);
+      }
     }
 
-    function loop() {
-
-  // reset dropdown
-  for (var i = 0; i < items.length; i++) {
-    items[i].style.display = "none";
-  }
-
-  index = 0;
-  direction = "down";
-
-  // restart VIDEN OM animation
-  var text = document.querySelector('.big-text');
-  if (text) {
-    text.style.animation = "none";
-    text.offsetHeight;
-    text.style.animation = "zoomText 3s forwards";
-  }
-
-  // start dropdown efter zoom
-  setTimeout(function () {
-
-    var interval = setInterval(runDropdown, 700);
-
+    // starter efter tekst animation
     setTimeout(function () {
-      clearInterval(interval);
-      setTimeout(loop, 1500);
-    }, 9000);
-
-  }, 3000);
-}
+      setInterval(showNext, 600);
+    }, 3000);
   }
 
-  // 🔥 VIGTIGT: vent på DOM
+  // sikker init
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initBanner);
   } else {
