@@ -18,13 +18,9 @@
             og virksomheder.
           </div>
 
-          <div class="cta">
-            Hold musen over VIDEN OM og se alle fagsektionerne.<br> 
-            VIDEN OM finder du under BygTek logoet.
-          </div>
-
+          <!-- DROPDOWN -->
           <div class="fake-dropdown hidden">
-            <div class="dropdown-label">Se fagsektionerne her:</div>
+            <div class="dropdown-label">Se eksempler på fagsektioner:</div>
             <div class="dropdown-header">VIDEN OM ☰</div>
 
             <ul class="dropdown-list">
@@ -39,6 +35,12 @@
               <li>SE ØVRIGE UNDER</li>
               <li>VIDEN OM</li>
             </ul>
+          </div>
+
+          <!-- CTA UNDER DROPDOWN -->
+          <div class="cta">
+            Hold musen over VIDEN OM og se alle fagsektionerne.<br> 
+            VIDEN OM finder du under BygTek logoet.
           </div>
 
         </div>
@@ -93,14 +95,11 @@
         max-width:40%;
       }
 
-      .cta {
-        position:absolute; left:6%; bottom:10%;
-        background:#ffcc00; color:#000;
-        padding:12px 18px; font-weight:700;
-      }
-
+      /* DROPDOWN (RYKKET OP) */
       .fake-dropdown {
-        position:absolute; top:20%; right:6%;
+        position:absolute;
+        top:15%;
+        right:6%;
         width:clamp(180px,18vw,280px);
         transition:opacity 0.5s ease, transform 0.5s ease;
       }
@@ -114,6 +113,11 @@
       .fake-dropdown.show {
         opacity:1;
         transform:translateY(0);
+      }
+
+      .dropdown-label {
+        margin-bottom:6px;
+        font-weight:600;
       }
 
       .dropdown-header {
@@ -134,6 +138,18 @@
         border-bottom:1px solid #ddd;
         display:none;
       }
+
+      /* CTA UNDER DROPDOWN */
+      .cta {
+        position:absolute;
+        right:6%;
+        top:55%; /* 👈 under dropdown */
+        width:clamp(180px,18vw,280px);
+        background:#ffcc00;
+        color:#000;
+        padding:12px;
+        font-weight:700;
+      }
     `;
     document.head.appendChild(style);
 
@@ -145,24 +161,20 @@
 
     function startCycle() {
 
-      // restart tekst
       var text = document.querySelector('.big-text');
       text.style.animation = "none";
       text.offsetHeight;
       text.style.animation = "zoomText 3s forwards";
 
-      // skjul dropdown
       dropdown.classList.remove("show");
       dropdown.classList.add("hidden");
 
-      // ryd liste
       for (var i = 0; i < items.length; i++) {
         items[i].style.display = "none";
       }
 
       index = 0;
 
-      // efter intro → vis dropdown
       setTimeout(function () {
 
         dropdown.classList.remove("hidden");
@@ -174,11 +186,8 @@
             items[index].style.display = "block";
             index++;
           } else {
-
             clearInterval(interval);
-
-            setTimeout(startCycle, 2000); // loop
-
+            setTimeout(startCycle, 2000);
           }
 
         }, 800);
