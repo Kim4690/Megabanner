@@ -127,23 +127,56 @@
 
     // === DROPDOWN LOGIK ===
     var items = document.querySelectorAll('.dropdown-list li');
-    var index = 0;
+var index = 0;
+var interval = null;
 
-   var isPaused = false;
+function startDropdown() {
 
-function showNext() {
+  index = 0;
 
-  if (isPaused) return; // 🔥 stopper overlap
+  // ryd alt
+  for (var i = 0; i < items.length; i++) {
+    items[i].style.display = "none";
+  }
 
-  if (index < items.length) {
-    items[index].style.display = "block";
-    index++;
-  } else {
+  interval = setInterval(function () {
 
-    isPaused = true; // 🔥 pause dropdown
+    if (index < items.length) {
 
-    setTimeout(function () {
+      items[index].style.display = "block";
+      index++;
 
+    } else {
+
+      // stop dropdown
+      clearInterval(interval);
+
+      // reset efter pause
+      setTimeout(function () {
+
+        for (var i = 0; i < items.length; i++) {
+          items[i].style.display = "none";
+        }
+
+        // 🔥 restart VIDEN OM
+        var text = document.querySelector('.big-text');
+        if (text) {
+          text.style.animation = "none";
+          text.offsetHeight;
+          text.style.animation = "zoomText 3s forwards";
+        }
+
+        // 🔥 start dropdown igen EFTER tekst
+        setTimeout(startDropdown, 3000);
+
+      }, 1200);
+    }
+
+  }, 800); // tempo
+}
+
+// start første gang efter intro
+setTimeout(startDropdown, 3000);
       // reset alle
       for (var i = 0; i < items.length; i++) {
         items[i].style.display = "none";
